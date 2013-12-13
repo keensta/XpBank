@@ -2,7 +2,7 @@ package com.andi.xpbank.dev;
 
 import org.bukkit.Material;
 
-//Credit to H2NCH2COOH for item Positioning code. 
+//Credit to H2NCH2COOH base code made by him. With some slight changes by myself.
 public class MenuOptions {
 	
 	private String name;

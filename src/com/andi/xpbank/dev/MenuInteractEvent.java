@@ -7,7 +7,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
 
-//Credit to H2NCH2COOH for MenuEvent Idea
+//Credit to H2NCH2COOH base code made by him. With some slight changes by myself.
 public class MenuInteractEvent extends PlayerEvent{
 	
 	public static HandlerList handlers = new HandlerList();

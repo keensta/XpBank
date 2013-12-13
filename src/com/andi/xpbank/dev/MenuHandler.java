@@ -14,7 +14,7 @@ import org.bukkit.inventory.InventoryView;
 
 import com.andi.xpbank.XpBank;
 
-
+//Credit to H2NCH2COOH base code made by him. With some slight changes by myself.
 public class MenuHandler implements Listener{
 		
 	public XpBank plugin = XpBank.getInstance();

@@ -23,11 +23,11 @@ public class XpBankCommands implements Listener, CommandExecutor{
 	 * 2 Types of commands Admin,Modify
 	 * 
 	 * Admin: 
-	 * 	setLevel : Sets the target players level to the given [Argument]. - Done
-	 * 	addLevel : Adds given [Argument] to current players level. - Done
-	 *  removeLevel : Removes given [Argument] from current players level. - Done
-	 * 	setMax : Sets the servers max storage as the given [Argument]. - Done
-	 * 	setLimit : Sets the servers bank limit as the given [Argument]. - Done
+	 * 	setLevel : Sets the target players level to the given [Argument]. 
+	 * 	addLevel : Adds given [Argument] to current players level. 
+	 *  removeLevel : Removes given [Argument] from current players level. 
+	 * 	setMax : Sets the servers max storage as the given [Argument].
+	 * 	setLimit : Sets the servers bank limit as the given [Argument].
 	 * 	setPlyMax : Sets the players max storage as the given [Argument].
 	 * 	setPlyLimit : Sets the players bank limit as the given [Argument].
 	 * 	setPlyAmt : Sets the players current bank amount as the given [Arugment].
@@ -56,10 +56,54 @@ public class XpBankCommands implements Listener, CommandExecutor{
 		}
 		
 		if(args.length <= 0) {
-			sender.sendMessage(ChatColor.RED + "Sorry but help is currently short of help with XpBankRework (Beta) it will be fully up soon");
-			sender.sendMessage(ChatColor.GREEN + "/xp clickAmt [Amount] - Sets amount to add/remove when interacting with bank.");
+			sender.sendMessage(ChatColor.RED + "[XpBank] Use '/xp help'");
+			
 			return true;
 		} else {
+			
+			//TODO: Make a better help section this is quickly throw together for release of plugin its a workaround and NEEDS to be changed
+			if(args[0].equalsIgnoreCase("help")) {
+				
+				if(args.length == 1){
+					sender.sendMessage(ChatColor.GRAY + "------------------------XpBank-----------------------");
+					sender.sendMessage(ChatColor.RED + "Sorry but help is currently short of help with XpBankRework (Beta) it will be fully up soon");
+					sender.sendMessage(ChatColor.GREEN + "/xp clickAmt [Amount] - Sets amount to add/remove when interacting with bank.");
+					
+					if(p.hasPermission("xp.admin")) {
+						sender.sendMessage(ChatColor.GREEN + "/xp setLevel [level] [player]" + ChatColor.AQUA + " - " + ChatColor.GOLD 
+								+ " Sets the target players level to the given [level]");
+						sender.sendMessage(ChatColor.GREEN + "/xp addLevel [level] [player]" + ChatColor.AQUA + " - " + ChatColor.GOLD 
+								+ " Adds given [level] to current players level.");
+						sender.sendMessage(ChatColor.GREEN + "/xp removeLevel [level] [player]" + ChatColor.AQUA + " - " + ChatColor.GOLD 
+								+ " Removes given [level] from current players level.");
+						sender.sendMessage(ChatColor.GREEN + "/xp setLimit [limit]" + ChatColor.AQUA + " - " + ChatColor.GOLD 
+								+ " Sets the servers bank limit as the given [limit].");
+						sender.sendMessage(ChatColor.GREEN + "/xp setLimit [limit]" + ChatColor.AQUA + " - " + ChatColor.GOLD 
+								+ " Sets the servers bank limit as the given [limit].");
+						sender.sendMessage(ChatColor.GREEN + "Page 1 of 2. Do '/Xp help 2' for page 2");
+						sender.sendMessage(ChatColor.GRAY + "-----------------------------------------------------");
+					}
+				}
+				
+				if(args.length == 2) {
+					int i = Integer.parseInt(args[1]);
+					
+					if(i == 2) {
+						sender.sendMessage(ChatColor.GRAY + "------------------------XpBank-----------------------");
+						sender.sendMessage(ChatColor.GREEN + "/xp setPlyMax [max] [player]" + ChatColor.AQUA + " - " + ChatColor.GOLD 
+								+ "  Sets the [player] max storage as the given [max].");
+						sender.sendMessage(ChatColor.GREEN + "/xp setPlyLimit [limit] [player]" + ChatColor.AQUA + " - " + ChatColor.GOLD 
+								+ "  Sets the [player] bank limit as the given [limit].");
+						sender.sendMessage(ChatColor.GREEN + "/xp setPlyAmt [amt] [player]" + ChatColor.AQUA + " - " + ChatColor.GOLD 
+								+ "  Sets the [player] current bank amount as the given [amt].");
+						sender.sendMessage(ChatColor.GREEN + "/xp resetPly [player]" + ChatColor.AQUA + " - " + ChatColor.GOLD 
+								+ "  Resets all values of the [player] BankAmount,MaxStorage,BankLimit");
+						sender.sendMessage(ChatColor.GREEN + "Page 2 of 2. Do '/Xp help' for page 1");
+						sender.sendMessage(ChatColor.GRAY + "-----------------------------------------------------");
+					}
+				}
+				
+			}
 			
 			//Modify Commands Begin
 			if(args[0].equalsIgnoreCase("clickAmt") && p.hasPermission("xp.quickstore")) {
@@ -78,7 +122,7 @@ public class XpBankCommands implements Listener, CommandExecutor{
 			//Modify Commands End
 			
 			//Admin Commands
-			if(p.hasPermission("xpbank.admin")) {
+			if(p.hasPermission("xp.admin")) {
 				
 				//Level Commands Begin
 				if(args[0].equalsIgnoreCase("setLevel")) {

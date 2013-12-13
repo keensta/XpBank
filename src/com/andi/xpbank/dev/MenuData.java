@@ -11,6 +11,7 @@ import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+//Credit to H2NCH2COOH base code made by him. With some slight changes by myself.
 public class MenuData {
 
 	private Player player;

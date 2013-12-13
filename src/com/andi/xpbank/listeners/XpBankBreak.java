@@ -71,29 +71,39 @@ public class XpBankBreak implements Listener{
 				if(amountCheck) {
 					double d = Double.parseDouble(sign.getLine(2));
 					int xp = (int) (d + em.getCurrentExp());
+					
 					em.setExp(xp);
 					p.sendMessage(ChatColor.GREEN + "You broke an XpBank owned by " + owner);
+					
 					if(playerName.equals(owner)) {
 						Player ownerP = Bukkit.getPlayer(playerName);
+						
 						if(ownerP != null) {
 							xpBank.getVars().addBankAmount(ownerP.getName(), 0);
 							xpBank.getVars().addPlayerLoaded(ownerP.getName());
 						}
+						
 					}
+					
 					xpBank.getVars().needSaving = true;
 					return;
 				} else {
 					double d = Double.parseDouble(sign.getLine(2));
 					int xp = (int) (d + em.getCurrentExp());
+					
 					em.setExp(xp);
 					p.sendMessage(ChatColor.GREEN + "You broke an XpBank owned by " + owner);
+					
 					if(playerName.equals(owner)) {
 						Player ownerP = Bukkit.getPlayer(playerName);
+						
 						if(ownerP != null) {
 							xpBank.getVars().addBankAmount(ownerP.getName(), newBankAmount);
 							xpBank.getVars().addPlayerLoaded(ownerP.getName());
 						}
+						
 					}
+					
 					xpBank.getVars().needSaving = true;
 					return;
 				}

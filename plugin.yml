@@ -9,7 +9,7 @@ permissions:
        description: Allows use of /xp pay Command.
        default: false
    xp.admin:
-       description: Allows use of all Mod commands.
+       description: Allows use of all Admin commands.
        default: op
    xp.create:
        description: Allows Creation of Banks.

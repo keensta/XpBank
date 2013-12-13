@@ -1,6 +1,8 @@
 #Orignal Author 'Keensta'
 #Current Project Author 'Keensta' 
 #Some features are not fully implemented, untill a full release of the plugin.
+#Current Release: Beta
+#Please report all bugs and spelling mistakes on my plugin Dev page by creating a ticket.
 
 settings:
   limit:
@@ -8,5 +10,4 @@ settings:
   maxstorage:
     default: 28563
   disableBanks: false
-  #These two features below are yet to be finished/added.
   spawnerExp: true

@@ -57,11 +57,6 @@ public class XpBank extends JavaPlugin {
 		
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(this,  new XpBankSave(), 20 * 15, (20 * 60) * 2);
 
-		/*try {
-			CreateFakePlayer();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}*/
 		menuH = new MenuHandler(this);
 		devMenu = new DevMenu(menuH);
 		
@@ -114,24 +109,5 @@ public class XpBank extends JavaPlugin {
 	public boolean isPlayerAllowedBank(String name) {
 		return Bukkit.getPlayer(name).hasPermission("xp.create");
 	}
-	
-	/*public void CreateFakePlayer() throws Exception {
-		CraftServer cserver = (CraftServer) Bukkit.getServer();
-		
-        List<World> worlds = cserver.getWorlds();
-        if (worlds == null || worlds.isEmpty())
-                throw new Exception("There must be at least one world");
-        CraftWorld w = (CraftWorld) worlds.get(0);
-        
-        Location location = new Location(w, 0, 0, 0);
-        MinecraftServer mcserver = cserver.getServer();
-        WorldServer world = ((CraftWorld) location.getWorld()).getHandle();
-        WorldServer worldserver = mcserver.getWorldServer(0);
-        PlayerInteractManager pim = new PlayerInteractManager(worldserver);
-        GameProfile gp = new GameProfile("XpBankTest", "XpBankPlayer");
-        
-    
-        VirutalPlayer vp = new VirutalPlayer(cserver, mcserver, world, gp, pim);
-	}*/
 
 }
