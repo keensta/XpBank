@@ -1,0 +1,28 @@
+name: XpBank
+main: com.andi.xpbank.XpBank
+version: 1.6
+author: Andi(Keensta), SwiftDeath
+description: Allows the creation of Xp Banks using signs. 
+
+permissions:
+   xp.pay:
+       description: Allows use of /xp pay Command.
+       default: false
+   xp.admin:
+       description: Allows use of all Mod commands.
+       default: op
+   xp.create:
+       description: Allows Creation of Banks.
+       default: false
+   xp.create.unlimited:
+       description: Allows placing of unlimited banks.
+       default: false
+   xp.breakany:
+       description: Allows use of all Mod commands.  
+       default: op     
+   xp.quickstore:
+       description: Allows use of quick storing /xp clickamt.  
+       default: false
+commands:
+  xp:
+    description: Xp Command.
