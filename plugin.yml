@@ -1,7 +1,7 @@
 name: XpBank
 main: com.andi.xpbank.XpBank
-version: 1.6
-author: Andi(Keensta), SwiftDeath
+version: 1
+author: Andi(Keensta)
 description: Allows the creation of Xp Banks using signs. 
 
 permissions:
@@ -10,7 +10,7 @@ permissions:
        default: false
    xp.admin:
        description: Allows use of all Admin commands.
-       default: op
+       default: false
    xp.create:
        description: Allows Creation of Banks.
        default: false
@@ -18,8 +18,8 @@ permissions:
        description: Allows placing of unlimited banks.
        default: false
    xp.breakany:
-       description: Allows use of all Mod commands.  
-       default: op     
+       description: Allows person to break any sign.  
+       default: false     
    xp.quickstore:
        description: Allows use of quick storing /xp clickamt.  
        default: false

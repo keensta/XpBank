@@ -58,7 +58,7 @@ public class XpBankInteract implements Listener{
 				double maxStorage = (xpBank.getVars().hasMaxStorage(p.getName()) ? xpBank.getVars().getMaxStorage(p.getName()) : xpBank.getVars().serverMaxStorage);
 				ExperienceManager em = xpBank.getVars().getExperienceManager(p.getName());
 				double value = Double.parseDouble(sign.getLine(2));
-				int amount = (xpBank.getVars().hasPlayerList(p.getName()) ? xpBank.getVars().getPlayerList(p.getName()) : 1);
+				int amount = (xpBank.getVars().hasPlayerList(p.getName()) ? xpBank.getVars().getPlayerList(p.getName()) : xpBank.getVars().serverClickAmt);
 				
 				switch (ev.getAction()) {
 				case RIGHT_CLICK_BLOCK:

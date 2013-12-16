@@ -21,9 +21,10 @@ public class XpBankVars {
 	private HashMap<String, Integer> playerList = new HashMap<String, Integer>();
 	
 	private List<String> loadedPlayers = new ArrayList<String>();
-	//TODO: Add a server wide default click amount & a spawner exp stop.
+	//TODO: Add a server wide default click amount(DONE) & a spawner exp stop.
 	public double serverMaxStorage;
 	public double serverBankLimit;
+	public int serverClickAmt;
 	
 	public boolean needSaving = false;
 	
@@ -48,14 +49,16 @@ public class XpBankVars {
 		
 		double maxStorage = cfg.getDouble("settings." + "maxstorage." + "default");
 		double bankAmount = (cfg.getInt("settings." + "limit." + "default") == 0 ? Integer.MAX_VALUE : cfg.getInt("settings." + "limit." + "default"));
+		int clickAmt = (cfg.getInt("settings." + "clickamt." + "default") == 0 ? 1 : cfg.getInt("settings." + "clickamt." + "default"));
 		boolean bankDisable = cfg.getBoolean("settings." + "disableBanks");
 		
-		setDefaults(maxStorage, bankAmount, bankDisable);
+		setDefaults(maxStorage, bankAmount, clickAmt, bankDisable);
 	}
 	
-	public void setDefaults(double d, double d2, boolean b) {
+	public void setDefaults(double d, double d2, int c, boolean b) {
 		serverMaxStorage = d;
 		serverBankLimit = d2;
+		serverClickAmt = c;
 		banksDisabled = b;
 	}
 	
