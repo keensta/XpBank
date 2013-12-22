@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import com.andi.xpbank.XpBank;
 import com.andi.xpbank.utils.ExperienceManager;
+import com.andi.xpbank.utils.MiscMethods;
 
 public class XpBankCommands implements Listener, CommandExecutor{
 	
@@ -121,7 +122,7 @@ public class XpBankCommands implements Listener, CommandExecutor{
 					return false;
 				}
 				
-				int i = (int) Integer.parseInt(args[1]);
+				int i = (int) MiscMethods.getInt(args[1]);
 				
 				if(i <= 0) {
 					sender.sendMessage(ChatColor.RED + "You have to select a positive numder.");
@@ -141,8 +142,13 @@ public class XpBankCommands implements Listener, CommandExecutor{
 					return false;
 				}
 				
-				int i = (int) Integer.parseInt(args[1]);
+				int i = (int) MiscMethods.getInt(args[1]);
 				ExperienceManager em = xpBank.getVars().getExperienceManager(p.getName());
+				
+				if(i == 0) {
+					sender.sendMessage(ChatColor.RED + "Command help /xp calc [Level]");
+					return false;
+				}
 				
 				if(em.getLevelForExp(em.getCurrentExp()) >= i) {
 					sender.sendMessage(ChatColor.RED + "You're level " + em.getLevelForExp(em.getCurrentExp()) + ". " + i + 
@@ -157,13 +163,19 @@ public class XpBankCommands implements Listener, CommandExecutor{
 			
 			if(args[0].equalsIgnoreCase("pay") && p.hasPermission("xp.pay")) {
 				
-				if(args.length < 2) {
+				if(args.length <= 2) {
 					sender.sendMessage(ChatColor.RED + "Command help /xp pay [Amount] [player]");
 					return false;
 				}
 
 				ExperienceManager emP =  xpBank.getVars().getExperienceManager(p.getName());
-				int i = (int) Integer.parseInt(args[1]);
+				int i = (int) MiscMethods.getInt(args[1]);
+				
+				if(i == 0) {
+					sender.sendMessage(ChatColor.RED + "Command help /xp pay [Amount] [Player]");
+					return false;
+				}
+				
 				String tp = args[2];
 				
 				if(emP.getCurrentExp() < i) {
@@ -195,12 +207,18 @@ public class XpBankCommands implements Listener, CommandExecutor{
 				//Level Commands Begin
 				if(args[0].equalsIgnoreCase("setLevel")) {
 					
-					if(args.length < 2) {
+					if(args.length <= 2) {
 						sender.sendMessage(ChatColor.RED + "Command help /xp setLevel [level] [player]");
 						return false;
 					}
 					
-					int i = (int) Integer.parseInt(args[1]);
+					int i = (int) MiscMethods.getInt(args[1]);
+					
+					if(i == 0) {
+						sender.sendMessage(ChatColor.RED + "Command help /xp setLevel [level] [player]");
+						return false;
+					}
+					
 					String tp = args[2];
 					
 					Player targetPlayer = Bukkit.getPlayer(tp);
@@ -219,12 +237,18 @@ public class XpBankCommands implements Listener, CommandExecutor{
 				
 				if(args[0].equalsIgnoreCase("addLevel")) {
 					
-					if(args.length < 2) {
+					if(args.length <= 2) {
 						sender.sendMessage(ChatColor.RED + "Command help /xp addLevel [level] [player]");
 						return false;
 					}
 					
-					int i = (int) Integer.parseInt(args[1]);
+					int i = (int) MiscMethods.getInt(args[1]);
+					
+					if(i == 0) {
+						sender.sendMessage(ChatColor.RED + "Command help /xp addLevel [level] [player]");
+						return false;
+					}
+					
 					String tp = args[2];
 					
 					Player targetPlayer = Bukkit.getPlayer(tp);
@@ -245,12 +269,18 @@ public class XpBankCommands implements Listener, CommandExecutor{
 				
 				if(args[0].equalsIgnoreCase("removeLevel")) {
 					
-					if(args.length < 2) {
+					if(args.length <= 2) {
 						sender.sendMessage(ChatColor.RED + "Command help /xp removeLevel [level] [player]");
 						return false;
 					}
 					
-					int i = (int) Integer.parseInt(args[1]);
+					int i = (int) MiscMethods.getInt(args[1]);
+					
+					if(i == 0) {
+						sender.sendMessage(ChatColor.RED + "Command help /xp removeLevel [level] [player]");
+						return false;
+					}
+					
 					String tp = args[2];
 					
 					Player targetPlayer = Bukkit.getPlayer(tp);
@@ -278,7 +308,12 @@ public class XpBankCommands implements Listener, CommandExecutor{
 						return false;
 					}
 					
-					int i = (int) Integer.parseInt(args[1]);
+					int i = (int) MiscMethods.getInt(args[1]);
+					
+					if(i == 0) {
+						sender.sendMessage(ChatColor.RED + "Command help /xp setMax [amount]");
+						return false;
+					}
 					
 					xpBank.getVars().serverMaxStorage = i;
 					xpBank.getVars().needSaving = true;
@@ -295,7 +330,12 @@ public class XpBankCommands implements Listener, CommandExecutor{
 						return false;
 					}
 					
-					int i = (int) Integer.parseInt(args[1]);
+					int i = (int) MiscMethods.getInt(args[1]);
+					
+					if(i == 0) {
+						sender.sendMessage(ChatColor.RED + "Command help /xp setLimit [amount]");
+						return false;
+					}
 					
 					xpBank.getVars().serverBankLimit = i;
 					xpBank.getVars().needSaving = true;
@@ -312,7 +352,12 @@ public class XpBankCommands implements Listener, CommandExecutor{
 						return false;
 					}
 					
-					int i = (int) Integer.parseInt(args[1]);
+					int i = (int) MiscMethods.getInt(args[1]);
+					
+					if(i == 0) {
+						sender.sendMessage(ChatColor.RED + "Command help /xp setClickAmt [amount]]");
+						return false;
+					}
 					
 					xpBank.getVars().serverClickAmt = i;
 					xpBank.getVars().needSaving = true;
@@ -326,12 +371,18 @@ public class XpBankCommands implements Listener, CommandExecutor{
 				//Player Handling Command Begin
 				if(args[0].equalsIgnoreCase("setPlyMax")) {
 					
-					if(args.length < 2) {
+					if(args.length <= 2) {
 						sender.sendMessage(ChatColor.RED + "Command help /xp setPlyMax [amount] [player]");
 						return false;
 					}
 					
-					int i = (int) Integer.parseInt(args[1]);
+					int i = (int) MiscMethods.getInt(args[1]);
+					
+					if(i == 0) {
+						sender.sendMessage(ChatColor.RED + "Command help /xp setPlyMax [amount] [player]");
+						return false;
+					}
+					
 					String tp = args[2];
 					
 					Player targetPlayer = Bukkit.getPlayer(tp);
@@ -354,12 +405,18 @@ public class XpBankCommands implements Listener, CommandExecutor{
 				
 				if(args[0].equalsIgnoreCase("setPlyLimit")) {
 					
-					if(args.length < 2) {
+					if(args.length <= 2) {
 						sender.sendMessage(ChatColor.RED + "Command help /xp setPlyLimit [amount] [player]");
 						return false;
 					}
 					
-					int i = (int) Integer.parseInt(args[1]);
+					int i = (int) MiscMethods.getInt(args[1]);
+					
+					if(i == 0) {
+						sender.sendMessage(ChatColor.RED + "Command help /xp setPlyLimit [amount] [player]");
+						return false;
+					}
+					
 					String tp = args[2];
 					
 					Player targetPlayer = Bukkit.getPlayer(tp);
@@ -382,12 +439,18 @@ public class XpBankCommands implements Listener, CommandExecutor{
 				
 				if(args[0].equalsIgnoreCase("setPlyAmt")) {
 					
-					if(args.length < 2) {
+					if(args.length <= 2) {
 						sender.sendMessage(ChatColor.RED + "Command help /xp setPlyAmt [amount] [player]");
 						return false;
 					}
 					
-					int i = (int) Integer.parseInt(args[1]);
+					int i = (int) MiscMethods.getInt(args[1]);
+					
+					if(i == 0) {
+						sender.sendMessage(ChatColor.RED + "Command help /xp setPlyAmt [amount] [player]");
+						return false;
+					}
+					
 					String tp = args[2];
 					
 					Player targetPlayer = Bukkit.getPlayer(tp);
@@ -410,10 +473,11 @@ public class XpBankCommands implements Listener, CommandExecutor{
 				
 				if(args[0].equalsIgnoreCase("resetPly")) {
 					
-					if(args.length < 2) {
+					if(args.length <= 2) {
 						sender.sendMessage(ChatColor.RED + "Command help /xp resetPly [player]");
 						return false;
 					}
+					
 					String tp = args[1];
 					
 					Player targetPlayer = Bukkit.getPlayer(tp);

@@ -22,5 +22,15 @@ public class MiscMethods {
 		
 		return (bankAmount >= bankLimit ? false : true);
 	}
+	
+	public static int getInt(String s) {
+		int i;
+		try {
+			i = Integer.parseInt(s);
+		} catch (Exception e) {
+			return 0;
+		}
+		return i;
+	}
 
 }
