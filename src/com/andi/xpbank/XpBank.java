@@ -15,6 +15,7 @@ import com.andi.xpbank.dev.MenuHandler;
 import com.andi.xpbank.listeners.XpBankBreak;
 import com.andi.xpbank.listeners.XpBankCreate;
 import com.andi.xpbank.listeners.XpBankInteract;
+import com.andi.xpbank.listeners.XpBankSpawnerExp;
 
 public class XpBank extends JavaPlugin {
 
@@ -30,6 +31,7 @@ public class XpBank extends JavaPlugin {
 	private XpBankCreate bankCreate;
 	private XpBankBreak bankBreak;
 	private XpBankInteract bankInteract;
+	private XpBankSpawnerExp spawnerExp;
 	
 	//Command Class
 	private XpBankCommands bankCommands;
@@ -52,6 +54,7 @@ public class XpBank extends JavaPlugin {
 		bankCreate = new XpBankCreate();
 		bankBreak = new XpBankBreak();
 		bankInteract = new XpBankInteract();
+		spawnerExp = new XpBankSpawnerExp();
 		
 		bankCommands = new XpBankCommands();
 		
@@ -96,6 +99,10 @@ public class XpBank extends JavaPlugin {
 	
 	public XpBankInteract getXpBankInteract() {
 		return bankInteract;
+	}
+	
+	public XpBankSpawnerExp getSpawnerExp() {
+		return spawnerExp;
 	}
 	
 	public XpBankCommands getXpBankCmd() {

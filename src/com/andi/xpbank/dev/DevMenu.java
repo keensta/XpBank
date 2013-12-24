@@ -21,10 +21,11 @@ public class DevMenu implements Listener{
 	@SuppressWarnings("unused")
 	private XpBankVars vars = xpBank.getVars();
 	
-	String[] allowedUsers = {"keensta"};
+	String[] allowedUsers = {};
 	HashMap<String, String> devMenuOrder = new HashMap<String, String>();
 
-	
+	//Nothing here works unless there is a allowedUser however its currently Impossible to add them other then editting the code itself. 
+	//So this is usless and is not used at all...
 	public DevMenu (MenuHandler menuH) {
 		
 		StringBuilder sb = new StringBuilder();

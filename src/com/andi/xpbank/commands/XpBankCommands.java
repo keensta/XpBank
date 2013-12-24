@@ -107,6 +107,8 @@ public class XpBankCommands implements Listener, CommandExecutor{
 								+ "  Sets the [player] current bank amount as the given [amt].");
 						sender.sendMessage(ChatColor.GREEN + "/xp resetPly [player]" + ChatColor.GRAY + " - " + ChatColor.GOLD 
 								+ "  Resets all values of the [player] BankAmount,MaxStorage,BankLimit");
+						sender.sendMessage(ChatColor.GREEN + "/xp spawnerExp" + ChatColor.GRAY + " - " + ChatColor.GOLD 
+								+ "  Toggles the spawnerExp boolean in the config.");
 						sender.sendMessage(ChatColor.GREEN + "Page 2 of 2. Do '/Xp help' for page 1");
 						sender.sendMessage(ChatColor.GRAY + "-----------------------------------------------------");
 					}
@@ -143,7 +145,7 @@ public class XpBankCommands implements Listener, CommandExecutor{
 				}
 				
 				int i = (int) MiscMethods.getInt(args[1]);
-				ExperienceManager em = xpBank.getVars().getExperienceManager(p.getName());
+				ExperienceManager em = new ExperienceManager(p);
 				
 				if(i == 0) {
 					sender.sendMessage(ChatColor.RED + "Command help /xp calc [Level]");
@@ -168,7 +170,7 @@ public class XpBankCommands implements Listener, CommandExecutor{
 					return false;
 				}
 
-				ExperienceManager emP =  xpBank.getVars().getExperienceManager(p.getName());
+				ExperienceManager emP =  new ExperienceManager(p);
 				int i = (int) MiscMethods.getInt(args[1]);
 				
 				if(i == 0) {
@@ -190,7 +192,7 @@ public class XpBankCommands implements Listener, CommandExecutor{
 					return false;
 				}
 				
-				ExperienceManager emTP =  xpBank.getVars().getExperienceManager(targetPlayer.getName());
+				ExperienceManager emTP = new ExperienceManager(targetPlayer);
 				
 				emP.setExp(emP.getCurrentExp() - i);
 				sender.sendMessage(ChatColor.GREEN + "You have paid " + targetPlayer.getDisplayName() + " " + i + " xp");
@@ -363,6 +365,19 @@ public class XpBankCommands implements Listener, CommandExecutor{
 					xpBank.getVars().needSaving = true;
 					
 					sender.sendMessage(ChatColor.GREEN + "You have set server default click amount to " + i);
+					
+					return true;
+				}
+				
+				if(args[0].equalsIgnoreCase("spawnerExp")) {
+					
+					if(args.length < 1) {
+						sender.sendMessage(ChatColor.RED + "Command help /xp spawnerExp");
+						return false;
+					}
+
+					xpBank.getVars().spawnerExp = (xpBank.getVars().spawnerExp ? false : true);
+					sender.sendMessage(ChatColor.GREEN + "SapwnerExp has been set to " + xpBank.getVars().spawnerExp);
 					
 					return true;
 				}

@@ -21,7 +21,7 @@ public class XpBankVars {
 	private HashMap<String, Integer> playerList = new HashMap<String, Integer>();
 	
 	private List<String> loadedPlayers = new ArrayList<String>();
-	//TODO: Add a server wide default click amount(DONE) & a spawner exp stop.
+	//A spawner exp stop.
 	public double serverMaxStorage;
 	public double serverBankLimit;
 	public int serverClickAmt;
@@ -29,6 +29,7 @@ public class XpBankVars {
 	public boolean needSaving = false;
 	
 	public boolean banksDisabled = false;
+	public boolean spawnerExp = false;
 	
 	public XpBankVars() {
 		setupDefaults();
@@ -51,15 +52,17 @@ public class XpBankVars {
 		double bankAmount = (cfg.getInt("settings." + "limit." + "default") == 0 ? Integer.MAX_VALUE : cfg.getInt("settings." + "limit." + "default"));
 		int clickAmt = (cfg.getInt("settings." + "clickamt." + "default") == 0 ? 1 : cfg.getInt("settings." + "clickamt." + "default"));
 		boolean bankDisable = cfg.getBoolean("settings." + "disableBanks");
+		boolean spawnerExpDisable = cfg.getBoolean("settings." + "spawnerExp");
 		
-		setDefaults(maxStorage, bankAmount, clickAmt, bankDisable);
+		setDefaults(maxStorage, bankAmount, clickAmt, bankDisable, spawnerExpDisable);
 	}
 	
-	public void setDefaults(double d, double d2, int c, boolean b) {
+	public void setDefaults(double d, double d2, int c, boolean b, boolean s) {
 		serverMaxStorage = d;
 		serverBankLimit = d2;
 		serverClickAmt = c;
 		banksDisabled = b;
+		spawnerExp = s;
 	}
 	
 	public void removePlayer(String name) {
@@ -120,20 +123,6 @@ public class XpBankVars {
 	
 	public Set<String> getBankAmountSet() {
 		return bankAmount.keySet();
-	}
-	
-	public boolean hasExperianceManager(String name) {
-		return (expManager.containsKey(name) ? true : false);
-	}
-	
-	public ExperienceManager getExperienceManager(String name) {
-		
-		if(!expManager.containsKey(name)) {
-			expManager.put(name, new ExperienceManager(Bukkit.getPlayer(name)));
-			return expManager.get(name);
-		}
-		
-		return expManager.get(name);
 	}
 	
 	public boolean hasPlayerList(String name) {

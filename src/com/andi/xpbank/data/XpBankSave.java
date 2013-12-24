@@ -22,6 +22,7 @@ public class XpBankSave implements Runnable{
 		cfg.set("settings." + "maxstorage." + "default", vars.serverMaxStorage);
 		cfg.set("settings." + "limit." + "default", (vars.serverBankLimit == Integer.MAX_VALUE ? 0 : vars.serverBankLimit));
 		cfg.set("settings." + "clickamt." + "default", vars.serverClickAmt);
+		cfg.set("settings." + "spawnerExp", vars.spawnerExp);
 		
 		for(String player : vars.getLoadedPlayers()) {
 			

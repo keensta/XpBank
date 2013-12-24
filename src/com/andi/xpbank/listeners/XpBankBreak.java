@@ -50,7 +50,7 @@ public class XpBankBreak implements Listener{
 		if(!xpBank.isPlayerLoaded(p.getName()))
 			xpBank.getXpLoad().loadPlayerData(p);
 		
-		ExperienceManager em = xpBank.getVars().getExperienceManager(p.getName());
+		ExperienceManager em = new ExperienceManager(p);
 		
 		if(sign.getLine(0).replaceAll(" ", "").equalsIgnoreCase("[XpBank]")) {
 			
